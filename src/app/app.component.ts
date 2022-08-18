@@ -4,17 +4,17 @@ import { Pokemon } from './pokemon';
 
 @Component({
   selector: 'app-root',
-  template: ` <h1> Liste de pokémons </h1>`
-})
-export class AppComponent implements OnInit {
-  pokemonList = POKEMONS;
+  templateUrl:'app.component.html',
   
+})
+export class AppComponent implements OnInit{
+  pokemonList = POKEMONS;
 
-  ngOnInit() {
+  ngOnInit(): void {
       console.table(this.pokemonList);
       this.selectPokemon(this.pokemonList[0]);
   }
-  selectPokemon(pokemon: Pokemon) {
-    console.log(`Vous avez cliqué sur le pokémon ${pokemon.name}`)
+  selectPokemon(pokemon: Pokemon){
+    console.log(`Vous avez clique sur le pokémon ${pokemon.name}`);
   }
 }
