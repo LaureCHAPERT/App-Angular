@@ -1,4 +1,4 @@
-import { Directive,ElementRef, HostListener } from '@angular/core';
+import { Directive,ElementRef, HostListener, Input } from '@angular/core';
 
 @Directive({
   selector: '[pkmnBorderCard]'
@@ -9,15 +9,19 @@ export class BorderCardDirective {
 
     this.setBorder('#f5f5f5');
   }
+  //@Input permet que la couleur soit personnalisable dans le tpl
+  @Input('pkmnBorderCard') borderColor: string;
+
   //on ajoute des  "eventListeners" qui vont réagir en fonction de méthodes
   @HostListener('mouseenter') onMouseEnter() {
-    this.setBorder('#009688');
+    // si l'utilisateur définit une couleur OU celle par défaut 
+    this.setBorder(this.borderColor || '#009688');
   }
   @HostListener('mouseleave') onMouseLeave() {
     this.setBorder('#f5f5f5');
   }
   
-  //nos deux fonctions
+  //notre fonction
 
   private setBorder(color: string) {
     let border = 'solid 4px' + color;
