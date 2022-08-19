@@ -13,6 +13,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     AppComponent,
     PageNotFoundComponent
   ],
+  //**************************WARNING******************************/
+  //on fait attention aux modules qui contiennent des routes 
+  //l'ordre est très important => on met les home, redirect ou 404 A LA FIN
   imports: [
     BrowserModule,
     PokemonModule,
