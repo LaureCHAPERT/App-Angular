@@ -10,7 +10,8 @@ export class BorderCardDirective {
     this.setBorder('#f5f5f5');
   }
   //@Input permet que la couleur soit personnalisable dans le tpl
-  @Input('pkmnBorderCard') borderColor: string;
+  @Input('pkmnBorderCard') borderColor: string; //alias
+  @Input() pkmnBorderCard: string; //sans alias
 
   //on ajoute des  "eventListeners" qui vont réagir en fonction de méthodes
   @HostListener('mouseenter') onMouseEnter() {
