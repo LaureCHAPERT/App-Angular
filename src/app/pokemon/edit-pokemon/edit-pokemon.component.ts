@@ -14,8 +14,6 @@ import { PokemonService } from '../pokemon.service';
     <!-- ce composant possède un @Input => il attend une donnée d'entrée-->
     <app-pokemon-form *ngIf="pokemon" [pokemon]="pokemon"></app-pokemon-form>
   `,
-  styles: [
-  ]
 })
 export class EditPokemonComponent implements OnInit {
 
