@@ -1,3 +1,8 @@
+<!-- SI j'ai un pokémon avec un id valide je mets en place le formulaire
+sinon on passe à la ligne 66-->
+<!--on donne un identifant #pokemonForm à qui on greffe le résultat de la directive
+ngForm => va devenir un objet géré par angular pour avoir accès à l'état de validité 
+du formulaire en temps réel par exemple -->
 <form *ngIf="pokemon" (ngSubmit)="onSubmit()" #pokemonForm="ngForm">
   <div class="row">
     <div class="col s8 offset-s2">
@@ -6,6 +11,7 @@
         <!-- Pokemon name -->
         <div class="form-group">
           <label for="name">Nom</label>
+          <!--syntaxe [(ngModel)] pour remonter des infos du template au compontent.ts et on utilse à nouveau le #name-->
           <input type="text" class="form-control" id="name" required pattern="^[a-zA-Z0-9àéèç]{1,25}$"
             [(ngModel)]="pokemon.name" name="name" #name="ngModel">
 
@@ -39,6 +45,11 @@
           <label for="types">Types</label>
           <p *ngFor="let type of types">
             <label>
+              <!-- [checked] on pré-coche les types déjà renseignées
+              [disabled] on vient freezer certaines checkboxes si 
+            les entrées ne respectent pas certaines règles (minimum 1 entrée
+            et pas plus de 3
+            (change) on réagit avec la méthode selectType)-->
               <input type="checkbox" class="filled-in" id="{{ type }}" [value]="type" [checked]="hasType(type)"
                 [disabled]="!isTypesValid(type)" (change)="selectType($event, type)" />
               <span [attr.for]="type">
@@ -53,6 +64,7 @@
         <!-- Submit button -->
         <div class="divider"></div>
         <div class="section center">
+          <!--biding sur la propriété disabled : le bouton sera tout le temps désactivé si le form est invalide  en utilisant la variable référencé dans le template #pokemonForm dans la 1ère ligne de code-->>
           <button type="submit" class="waves-effect waves-light btn" [disabled]="!pokemonForm.form.valid">
             Valider</button>
         </div>

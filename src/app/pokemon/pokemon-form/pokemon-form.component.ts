@@ -40,6 +40,7 @@ export class PokemonFormComponent implements OnInit {
       this.pokemon.types.splice(index, 1);
     }
   }
+  //je redirige vers la page du pokémon maintenant modifié
   onSubmit() {
     console.log('Submit Form');
     this.router.navigate(['pokemon', this.pokemon.id]);
