@@ -40,6 +40,24 @@ export class PokemonFormComponent implements OnInit {
       this.pokemon.types.splice(index, 1);
     }
   }
+
+  isTypesValid(type: string):boolean {
+    //si le type inférieur  à 1 => empêche le user de décocher seulement la case
+    //actuellement cochée
+    if(this.pokemon.types.length == 1 && this.hasType(type))  {
+      return false;
+    }
+    //si le user a déjà sélectionné 3 coses il faut l'empêcher de sélectionner les 
+    //autres cases
+    //on freeze ici SEULEMENT les autres cases pas encore cochées (l'inverse de la 
+    //méthode hasType) pour que l'utilisateur puissent décocher les cochées
+    if(this.pokemon.types.length > 2 && !this.hasType(type)) {
+      return false;
+    }
+    return true;
+    //si l'utilisateur à déjà 3 checkbox => on empêche l'utilisateur de cocher
+    //sinon on laisse 
+  }
   //je redirige vers la page du pokémon maintenant modifié
   onSubmit() {
     console.log('Submit Form');
