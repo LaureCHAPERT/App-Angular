@@ -6,6 +6,7 @@ import { PokemonService } from '../pokemon.service';
 @Component({
   selector: 'app-pokemon-form',
   templateUrl: './pokemon-form.component.html',
+  styleUrls: ['./pokemon-form.component.css']
 })
 export class PokemonFormComponent implements OnInit {
   //avec cette ligne on demande une instanciation de Pokemon

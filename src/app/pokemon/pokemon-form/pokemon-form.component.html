@@ -15,6 +15,9 @@ du formulaire en temps réel par exemple -->
           <input type="text" class="form-control" id="name" required pattern="^[a-zA-Z0-9àéèç]{1,25}$"
             [(ngModel)]="pokemon.name" name="name" #name="ngModel">
 
+          <!--
+            Si ce n'est pas modifié ou valide c'est caché
+             On utilise name.valid pour y ajouer une class css-->
           <div [hidden]="name.valid || name.pristine" class="card-panel red accent-1">
             Le nom du pokémon est requis (1-25).
           </div>
@@ -25,6 +28,7 @@ du formulaire en temps réel par exemple -->
           <label for="hp">Point de vie</label>
           <input type="number" class="form-control" id="hp" required pattern="^[0-9]{1,3}$" [(ngModel)]="pokemon.hp"
             name="hp" #hp="ngModel">
+          <!--à nouveau ici la classe .valid-->
           <div [hidden]="hp.valid || hp.pristine" class="card-panel red accent-1">
             Les points de vie du pokémon sont compris entre 0 et 999.
           </div>
@@ -35,6 +39,7 @@ du formulaire en temps réel par exemple -->
           <label for="cp">Dégâts</label>
           <input type="number" class="form-control" id="cp" required pattern="^[0-9]{1,2}$" [(ngModel)]="pokemon.cp"
             name="cp" #cp="ngModel">
+          <!--.valid à nouveau pour le message d'erreur-->
           <div [hidden]="cp.valid || cp.pristine" class="card-panel red accent-1">
             Les dégâts du pokémon sont compris entre 0 et 99.
           </div>
