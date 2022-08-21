@@ -8,7 +8,7 @@ import { PokemonService } from '../pokemon.service';
   template: `
     <h2 class="center">Editer {{pokemon?.name}}</h2>
     <p *ngIf="pokemon" class="center">
-      <img [src]="pokemon.picture" alt="image pokemon">
+      <img [src]="pokemon.picture" alt="image pokemon"> 
     </p>
     <!-- on passe le sélecteur du composant pour l'afficher si j'ai un pokémon-->
     <!-- ce composant possède un @Input => il attend une donnée d'entrée-->
