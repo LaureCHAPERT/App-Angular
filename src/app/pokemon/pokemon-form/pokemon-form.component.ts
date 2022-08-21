@@ -12,6 +12,7 @@ export class PokemonFormComponent implements OnInit {
   //avec cette ligne on demande une instanciation de Pokemon
   @Input() pokemon:Pokemon;
   types: string[];
+  isAddForm:boolean;
 
   constructor(
     private router:Router,
@@ -21,6 +22,7 @@ export class PokemonFormComponent implements OnInit {
   //on initialise tous les types présents dans le projet
   ngOnInit()  {
     this.types= this.pokemonService.getPokemonTypeList();
+    this.isAddForm = this.router.url.includes('add');
   }
   //on vérifie si le pokémon en question a un type ou non 
   //afin de pré-cocher ou non un form
@@ -61,7 +63,13 @@ export class PokemonFormComponent implements OnInit {
   }
   //je redirige vers la page du pokémon maintenant modifié
   onSubmit() {
-    this.pokemonService.updatePokemon(this.pokemon)
+    if(this.isAddForm) {
+      this.pokemonService.addPokemon(this.pokemon)
+      .subscribe((pokemon: Pokemon)=> this.router.navigate(['pokemon', this.pokemon.id]));
+    }else {
+      this.pokemonService.updatePokemon(this.pokemon)
       .subscribe(()=>this.router.navigate(['pokemon', this.pokemon.id])); 
+    }
+    
   }
 }
