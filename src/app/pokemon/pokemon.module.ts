@@ -14,8 +14,9 @@ import { AddPokemonComponent } from './add-pokemon/add-pokemon.component';
 const pokemonRoutes: Routes = [
   { path: 'edit/pokemon/:id', component: EditPokemonComponent},
   { path: 'pokemons', component: ListPokemonComponent },
-  { path: 'pokemon/:id', component: DetailPokemonComponent},
   { path: 'pokemon/add', component:AddPokemonComponent},
+  { path: 'pokemon/:id', component: DetailPokemonComponent},
+  
   
 ]
     
