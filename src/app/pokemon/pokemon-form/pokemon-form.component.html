@@ -23,6 +23,22 @@ du formulaire en temps réel par exemple -->
           </div>
         </div>
 
+        <!-- Pokemon picture -->
+        <div *ngIf="isAddForm" class="form-group">
+          <label for="picture">Image</label>
+          <!--syntaxe [(ngModel)] pour remonter des infos du template au compontent.ts et on utilse à nouveau le #name-->
+          <input type="url" class="form-control" id="picture" required [(ngModel)]="pokemon.picture" name="picture"
+            #picture="ngModel">
+
+          <!--
+            Si ce n'est pas modifié ou valide c'est caché
+             On utilise name.valid pour y ajouer une class css-->
+          <div [hidden]="picture.valid || picture.pristine" class="card-panel red accent-1">
+            L'image du pokémon est requise.
+          </div>
+        </div>
+
+
         <!-- Pokemon hp -->
         <div class="form-group">
           <label for="hp">Point de vie</label>

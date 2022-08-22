@@ -8,7 +8,7 @@ import { PokemonService } from '../pokemon.service';
   template: `
     <h2 class="center">Editer {{pokemon?.name}}</h2>
     <p *ngIf="pokemon" class="center">
-      <img [src]="pokemon.picture" alt="image pokemon">
+      <img [src]="pokemon.picture" alt="image pokemon"> 
     </p>
     <!-- on passe le sélecteur du composant pour l'afficher si j'ai un pokémon-->
     <!-- ce composant possède un @Input => il attend une donnée d'entrée-->
@@ -28,7 +28,8 @@ export class EditPokemonComponent implements OnInit {
     const pokemonId:string|null = this.route.snapshot.paramMap.get('id');
     //je vais chercher le pokémon associé 
     if(pokemonId) {
-      this.pokemon = this.pokemonService.getPokemonById(+pokemonId)
+      this.pokemonService.getPokemonById(+pokemonId)
+        .subscribe(pokemon => this.pokemon = pokemon);
     }
     //s'il n'existe pas je mets undefined
     else {
