@@ -9,14 +9,14 @@ export class AuthService {
   isLoggedIn:boolean = false;
   redirectUrl: string;
 
-  logIn(name:string, password:string): Observable<boolean> {
+  login(name:string, password:string): Observable<boolean> {
     const isLoggedIn = (name == 'pikachu' && password == 'pikachu');
     return of(isLoggedIn).pipe(
       delay (1000)
       ,tap(isLoggedIn =>  this.isLoggedIn = isLoggedIn)
     )
   }
-  logOut(){
+  logout(){
     this.isLoggedIn = false;
   }
   constructor() { }
